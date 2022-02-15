@@ -11,21 +11,21 @@ def get_upload_path(instance, filename):
 class Education(models.Model):
     from_date = models.DateField()
     to_date = models.DateField(blank=True) # blank is for when the education not ended yet
-    institute =  models.CharField()
-    degree = models.CharField()
+    institute =  models.CharField(max_length=500)
+    degree = models.CharField(max_length=500)
     
 class Profile(models.Model):
-    first_name = models.CharField()
-    last_name = models.CharField()
+    first_name = models.CharField(max_length=500)
+    last_name = models.CharField(max_length=500)
     about = HTMLField(blank=True)
     
     profile_photo = models.ImageField(upload_to=get_upload_path, null=True)
     
-    email = models.CharField()
-    linkedIn = models.CharField(blank=True)
-    github = models.CharField(blank=True)
-    stackOverFlow = models.CharField(blank=True)
-    facebook = models.CharField(blank=True)
+    email = models.CharField(max_length=500)
+    linkedIn = models.CharField(max_length=500, blank=True)
+    github = models.CharField(max_length=500, blank=True)
+    stackOverFlow = models.CharField(max_length=500, blank=True)
+    facebook = models.CharField(max_length=500, blank=True)
     
     
 def get_portfolio_upload_path(instance, filename):
@@ -33,8 +33,8 @@ def get_portfolio_upload_path(instance, filename):
 
     
 class Portfolio(models.Model):
-    title = models.CharField()
-    description = models.CharField(blank=True)
+    title = models.CharField(max_length=500)
+    description = HTMLField(blank=True)
     
     photo = models.ImageField(upload_to=get_portfolio_upload_path, null=True)
     
