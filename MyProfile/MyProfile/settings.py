@@ -83,6 +83,7 @@ TINYMCE_DEFAULT_CONFIG = {
     "menubar": True,
     "statusbar": True,
     "height": "500",
+    "content_style": "@import url('https://use.fontawesome.com/releases/v5.15.4/js/all.js');",
 }
 
 
@@ -143,7 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Tehran"
 
 USE_I18N = True
 
