@@ -41,7 +41,7 @@ function sameOrigin(url) {
 var csrftoken = window.drf.csrfToken;
 
 $.ajaxSetup({
-  beforeSend: function(xhr, settings) {
+  beforeSend: function (xhr, settings) {
     if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
       // Send the token to same-origin, relative URLs only.
       // Send the token only if the method warrants CSRF protection

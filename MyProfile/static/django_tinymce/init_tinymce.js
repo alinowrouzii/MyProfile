@@ -53,16 +53,16 @@
     }
   }
 
-  ready(function() {
+  ready(function () {
     // initialize the TinyMCE editors on load
-    document.querySelectorAll('.tinymce').forEach(function(el) {
+    document.querySelectorAll('.tinymce').forEach(function (el) {
       initTinyMCE(el);
     });
 
     // initialize the TinyMCE editor after adding an inline in the django admin context.
-    if (typeof(django) !== 'undefined' && typeof(django.jQuery) !== 'undefined') {
-      django.jQuery(document).on('formset:added', function(event, $row, formsetName) {
-        $row.find('textarea.tinymce').each(function() {
+    if (typeof (django) !== 'undefined' && typeof (django.jQuery) !== 'undefined') {
+      django.jQuery(document).on('formset:added', function (event, $row, formsetName) {
+        $row.find('textarea.tinymce').each(function () {
           initTinyMCE(this);
         });
       });

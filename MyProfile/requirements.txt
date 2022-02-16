@@ -11,3 +11,5 @@ tzdata==2021.5
 django-tinymce==3.3.0
 Pillow
 djangorestframework
+psycopg2-binary==2.9.1
+gunicorn==20.1.0
