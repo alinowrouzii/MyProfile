@@ -7,7 +7,7 @@ from tinymce.models import HTMLField
 def get_value(key):
     try:
         return StaticData.objects.get(key=key).value
-    except:
+    except Exception:
         return None
 
 

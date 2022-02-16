@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from profileInfo.models import *
+from profileInfo.models import Education, Profile, Portfolio
 
 # Register your models here.
 

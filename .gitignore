@@ -1,3 +1,5 @@
 MyProfile/.venv
 MyProfile/commands
 MyProfile/media
+.vscode
+.env*

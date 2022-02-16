@@ -9,9 +9,9 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add postgresql-dev gcc python3-dev musl-dev \
+    && apk add jpeg-dev build-base zlib-dev libjpeg
 
-# lint
 RUN pip install --upgrade pip
 RUN pip install flake8==3.9.2
 COPY . .
@@ -44,7 +44,8 @@ RUN mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apk update && apk add libpq
+RUN apk update && apk add libpq jpeg-dev zlib-dev libjpeg
+
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
@@ -59,6 +60,9 @@ COPY . $APP_HOME
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
+
+
+# RUN useradd -G root,www-data -u 1000 ${user}
 
 # change to the app user
 USER app

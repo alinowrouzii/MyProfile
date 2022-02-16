@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from profileInfo.models import *
+from profileInfo.models import Profile, Portfolio, Education
 
 
 class ProfileSerializer(serializers.ModelSerializer):

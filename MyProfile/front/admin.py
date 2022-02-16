@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from front.models import *
+from front.models import StaticData
 
 # Register your models here.
 

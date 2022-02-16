@@ -1,28 +1,35 @@
-web-app:
-  build:
-    context: ./MyProfile
-    dockerfile: Dockerfile.prod
-  command: gunicorn MyProfile.wsgi:application --bind 0.0.0.0:8000
-  expose:
-    - 8000
-  env_file:
-    - ./.env.prod
-  depends_on:
-    - db
-  volumes:
+version: '3.8'
+
+services:
+
+  web-app:
+    build:
+      context: ./MyProfile
+      dockerfile: Dockerfile.prod
+    command: gunicorn MyProfile.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+    volumes:
       - static_volume:/home/app/web/static
       - media_volume:/home/app/web/media
-  networks:
-    - nginx-net
+    networks:
+      - nginx-net
+      - web-app-net
 
-db:
-  image: postgres:13.0-alpine
-  volumes:
-    - postgres_data:/var/lib/postgresql/data/
-  env_file:
-    - ./.env.prod.db
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.prod.db
+    networks:
+      - web-app-net
 
-nginx:
+  nginx:
     build: ./nginx
     ports:
       - 84:80
@@ -30,7 +37,9 @@ nginx:
       - web-app
     networks:
       - nginx-net
-
+    volumes:
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
 
 volumes:
   postgres_data:
