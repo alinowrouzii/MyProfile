@@ -1,6 +1,7 @@
 from django.urls import path
-from front.views import index
+from front.views import index, post
 
 urlpatterns = [
-    path("", index),
+    path("", index, name="index"),
+    path("post/<pk>/", post, name="post-item"),
 ]
