@@ -2,4 +2,6 @@ MyProfile/.venv
 MyProfile/commands
 MyProfile/media
 .vscode
+# Igonre All env files except test files
 .env*
+!.env*test
