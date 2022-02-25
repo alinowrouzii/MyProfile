@@ -5,7 +5,7 @@ Portfolio project that is written in Django and is fully Dockerized.
 
 ### How to run project:
 
-All dependencies should be installed before before:
+All dependencies should be installed:
 ```
 cd MyProfile
 virtualenv venv && source venv/bin/activate
